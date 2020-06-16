@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, FlatList, AsyncStorage } from 'react-native';
+import { StyleSheet, Image, View, FlatList, AsyncStorage } from 'react-native';
 
 import AddItem from './AddItem';
 import ListItem from './ListItem';
@@ -59,5 +59,7 @@ export default function ShoppingList() {
 }
 
 const styles = StyleSheet.create({
-	container: {},
+	container: {
+		height: '85%',
+	},
 });

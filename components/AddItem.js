@@ -25,15 +25,16 @@ export default function AddItem({ addItem }) {
 
 const styles = StyleSheet.create({
 	container: {
-		backgroundColor: 'lightgreen',
 		justifyContent: 'center',
 		alignItems: 'center',
 		paddingVertical: 20,
 	},
 	input: {
-		backgroundColor: 'lightgreen',
 		fontSize: 20,
-		borderColor: 'gray',
+		color: '#fff',
+		borderRadius: 5,
+		borderWidth: 1,
+		borderColor: 'whitesmoke',
 		paddingHorizontal: 10,
 		width: '80%',
 		height: 40,

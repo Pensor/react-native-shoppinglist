@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Animated } from 'react-native';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 
 export function Separator() {
@@ -9,14 +9,14 @@ export function Separator() {
 const RightAction = () => {
 	return (
 		<View style={styles.rightAction}>
-			<Text style={styles.rightText}>Delete</Text>
+			<Text style={styles.rightText}>Deleting...</Text>
 		</View>
 	);
 };
 
 export default function ListItem({ item, onSwipeFromRight }) {
 	return (
-		<Swipeable renderRightActions={RightAction} onSwipeableRightOpen={onSwipeFromRight} o>
+		<Swipeable renderRightActions={RightAction} onSwipeableRightOpen={onSwipeFromRight}>
 			<View style={styles.item}>
 				<Text style={styles.text}>{item.label}</Text>
 			</View>
@@ -26,30 +26,33 @@ export default function ListItem({ item, onSwipeFromRight }) {
 
 const styles = StyleSheet.create({
 	item: {
-		backgroundColor: 'whitesmoke',
 		padding: 15,
+		backgroundColor: 'rgba(60, 60, 60, 0.3)',
 	},
 	separator: {
 		flex: 1,
 		height: 1,
 		marginLeft: 5,
 		marginRight: 5,
-		backgroundColor: '#e4e4e4',
+		backgroundColor: '#ededed',
 	},
 	rightAction: {
 		flex: 1,
 		justifyContent: 'center',
-		backgroundColor: 'red',
 		alignItems: 'flex-end',
+		padding: 20,
 	},
 	rightText: {
+		borderRadius: 5,
+		backgroundColor: 'red',
 		color: '#fff',
-		fontWeight: '600',
-		padding: 20,
+		fontSize: 16,
+		fontWeight: '700',
+		padding: 5,
 	},
 	text: {
 		textAlign: 'center',
 		fontSize: 24,
-		color: '#000',
+		color: '#fff',
 	},
 });
