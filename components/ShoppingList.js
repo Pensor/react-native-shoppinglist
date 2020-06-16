@@ -1,36 +1,55 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, FlatList, AsyncStorage } from 'react-native';
 
 import AddItem from './AddItem';
 import ListItem from './ListItem';
 import { Separator } from './ListItem';
 
 export default function ShoppingList() {
-	const [list, setList] = useState([
-		{ label: 'Tomate', id: 1 },
-		{ label: 'Gurke', id: 2 },
-		{ label: 'Salat', id: 3 },
-		{ label: 'Fisch', id: 4 },
-		{ label: 'Kohl', id: 5 },
-	]);
+	const [list, setList] = useState([]);
+
+	async function storeData(data) {
+		try {
+			setList(data);
+			await AsyncStorage.setItem('todos', JSON.stringify(data));
+		} catch (error) {
+			console.log(error);
+		}
+	}
+
+	async function getData() {
+		try {
+			const todos = await AsyncStorage.getItem('todos');
+			if (todos) {
+				setList(JSON.parse(todos));
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	}
 
 	function addItem(item) {
-		let id = Math.max(...list.map(item => item.id), 0) + 1;
-		const newItem = { ...item, id };
-		setList([...list, newItem]);
+		let id = Math.max(...list.map(item => +item.id), 0) + 1;
+		const newItem = { ...item, id: id.toString() };
+		storeData([...list, newItem]);
 	}
 
-	function onSwipeFromRight(id) {
+	function deleteItem(id) {
 		const newList = list.filter(item => item.id !== id);
-		setList(newList);
+		storeData(newList);
 	}
+
+	useEffect(() => {
+		getData();
+	}, []);
 
 	return (
 		<View style={styles.container}>
 			<FlatList
 				data={list}
+				keyExtractor={item => item.id}
 				renderItem={({ item }) => (
-					<ListItem item={item} onSwipeFromRight={() => onSwipeFromRight(item.id)} />
+					<ListItem item={item} onSwipeFromRight={() => deleteItem(item.id)} />
 				)}
 				ItemSeparatorComponent={() => <Separator />}
 			/>
@@ -40,8 +59,5 @@ export default function ShoppingList() {
 }
 
 const styles = StyleSheet.create({
-	container: {
-		paddingTop: 20,
-		justifyContent: 'space-between',
-	},
+	container: {},
 });

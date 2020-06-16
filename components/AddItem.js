@@ -16,6 +16,8 @@ export default function AddItem({ addItem }) {
 				onChangeText={text => onChangeText(text)}
 				value={text}
 				onSubmitEditing={add}
+				placeholder='Add Item...'
+				placeholderTextColor='#fff'
 			/>
 		</View>
 	);
@@ -29,11 +31,11 @@ const styles = StyleSheet.create({
 		paddingVertical: 20,
 	},
 	input: {
-		backgroundColor: '#ffe',
+		backgroundColor: 'lightgreen',
+		fontSize: 20,
 		borderColor: 'gray',
-		borderRadius: 5,
-		borderWidth: 1,
 		paddingHorizontal: 10,
-		width: '90%',
+		width: '80%',
+		height: 40,
 	},
 });

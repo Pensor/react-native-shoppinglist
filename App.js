@@ -14,10 +14,12 @@ export default function App() {
 const styles = StyleSheet.create({
 	container: {
 		backgroundColor: '#fff',
-		paddingTop: 25,
 	},
 	heading: {
 		textAlign: 'center',
+		backgroundColor: 'lightgreen',
 		fontSize: 32,
+		padding: 20,
+		color: '#efe',
 	},
 });

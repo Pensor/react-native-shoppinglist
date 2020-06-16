@@ -16,7 +16,7 @@ const RightAction = () => {
 
 export default function ListItem({ item, onSwipeFromRight }) {
 	return (
-		<Swipeable renderRightActions={RightAction} onSwipeableRightOpen={onSwipeFromRight}>
+		<Swipeable renderRightActions={RightAction} onSwipeableRightOpen={onSwipeFromRight} o>
 			<View style={styles.item}>
 				<Text style={styles.text}>{item.label}</Text>
 			</View>
@@ -26,14 +26,14 @@ export default function ListItem({ item, onSwipeFromRight }) {
 
 const styles = StyleSheet.create({
 	item: {
-		backgroundColor: '#fff',
+		backgroundColor: 'whitesmoke',
 		padding: 15,
 	},
 	separator: {
 		flex: 1,
 		height: 1,
-		marginLeft: 10,
-		marginRight: 10,
+		marginLeft: 5,
+		marginRight: 5,
 		backgroundColor: '#e4e4e4',
 	},
 	rightAction: {
