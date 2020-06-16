@@ -37,6 +37,6 @@ const styles = StyleSheet.create({
 		borderColor: 'whitesmoke',
 		paddingHorizontal: 10,
 		width: '80%',
-		height: 40,
+		height: 50,
 	},
 });

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Image, View, FlatList, AsyncStorage } from 'react-native';
+import { StyleSheet, View, FlatList, AsyncStorage } from 'react-native';
 
 import AddItem from './AddItem';
 import ListItem from './ListItem';
 import { Separator } from './ListItem';
 
 export default function ShoppingList() {
-	const [list, setList] = useState([]);
+	const [list, setList] = useState([{ label: 'Brot', id: '1' }]);
 
 	async function storeData(data) {
 		try {

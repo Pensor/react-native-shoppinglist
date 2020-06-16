@@ -16,6 +16,7 @@ export default function App() {
 const styles = StyleSheet.create({
 	container: {
 		backgroundColor: '#fff',
+		height: '100vh',
 	},
 	heading: {
 		textAlign: 'center',
@@ -24,8 +25,6 @@ const styles = StyleSheet.create({
 		marginVertical: 25,
 	},
 	image: {
-		width: '100%',
 		height: '100%',
-		resizeMode: 'repeat',
 	},
 });
